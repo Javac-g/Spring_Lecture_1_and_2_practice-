@@ -88,4 +88,19 @@ public class Service {
         }
         return null;
     }
+
+    public Integer delete_A(Integer id){
+        int x = -1;
+        for (int i = 0; i < datalist.size();i++){
+            if (datalist.get(i).getId().equals(id)){
+                x = i;
+                log("Deleted_A",datalist.get(x));
+            }
+        }
+        if (x != -1){
+            datalist.remove(x);
+            return x;
+        }
+        return null;
+    }
 }//EOF
