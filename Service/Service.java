@@ -1,5 +1,7 @@
 package com.company.Service;
 
+import com.company.Controller.Car;
+import com.company.Controller.RequestDTO;
 import com.fasterxml.jackson.core.io.DataOutputAsStream;
 
 import java.io.ByteArrayOutputStream;
@@ -33,4 +35,19 @@ public class Service {
             e.printStackTrace();
         }
     }
-}
+    public void setEnum(ResponseDTO user, RequestDTO json){
+        for (Car x :json.getCarlist()){
+            switch (x.getValue()){
+                case "F":
+                    user.setCarEnum(CarEnum.Ford);
+                    break;
+                case "P":
+                    user.setCarEnum(CarEnum.Porshe);
+                    break;
+                default:
+                    user.setCarEnum(CarEnum.Bicycle);
+                    break;
+            }
+        }
+    }
+}//EOF
