@@ -11,12 +11,13 @@ import org.springframework.context.annotation.ScopedProxyMode;
 public class SpringConfigurationFactory {
 
     @Bean("Service")
-    @Scope(value = "prototype",proxyMode = ScopedProxyMode.TARGET_CLASS)
+//  @Scope(value = "prototype",proxyMode = ScopedProxyMode.TARGET_CLASS) will erase our datalist and give empty response
     public Service serviceBean(){
         return new Service();
     }
 
     @Bean("Controller")
+    @Scope(value = "prototype")
     public Controller controllerBean(){
         return new Controller(serviceBean());
     }
